@@ -1,18 +1,23 @@
+// ---------- SAFE USER INITIALIZATION ----------
+const defaultUser = {
+  name: "Green User",
+  age: "",
+  college: "",
+  city: "",
+  ecoScore: 0,
+  co2: 0,
+  trees: 0,
+  balance: 0
+};
 
-// Initialize user data
-if (!localStorage.getItem("user")) {
-  localStorage.setItem("user", JSON.stringify({
-    name: "Green User",
-    age: "",
-    college: "",
-    city: "",
-    ecoScore: 0,
-    co2: 0,
-    trees: 0,
-    balance: 0
-  }));
+let storedUser = JSON.parse(localStorage.getItem("user"));
+if (!storedUser) {
+  localStorage.setItem("user", JSON.stringify(defaultUser));
+} else {
+  localStorage.setItem("user", JSON.stringify({ ...defaultUser, ...storedUser }));
 }
 
+// ---------- PROFILE ----------
 function loadProfile() {
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -38,49 +43,39 @@ function saveProfile() {
   alert("Profile updated successfully ✅");
 }
 
+// ---------- DASHBOARD WELCOME ----------
+const user = JSON.parse(localStorage.getItem("user"));
+const welcomeEl = document.getElementById("welcome");
+if (welcomeEl && user) {
+  welcomeEl.innerText = "Welcome, " + user.name + " 🌱";
+}
 
-
-/* ---------------- LOGIN ---------------- */
+// ---------- LOGIN ----------
 function loginUser() {
   localStorage.setItem("loggedIn", "true");
   window.location.href = "dashboard.html";
 }
 
-/* ---------------- DASHBOARD ---------------- */
+// ---------- DASHBOARD ----------
 function loadDashboard() {
   const user = JSON.parse(localStorage.getItem("user"));
-
   document.getElementById("ecoScore").innerText = user.ecoScore;
   document.getElementById("co2").innerText = user.co2 + " kg";
   document.getElementById("trees").innerText = user.trees;
 }
 
-/* ---------------- ACTION SUBMISSION ---------------- */
+// ---------- ACTION SUBMISSION ----------
 function submitAction() {
   const action = document.getElementById("actionType").value;
   let user = JSON.parse(localStorage.getItem("user"));
 
-  let points = 0;
-  let co2 = 0;
-  let trees = 0;
+  let points = 0, co2 = 0, trees = 0;
 
   switch (action) {
-    case "transport":
-      points = 10;
-      co2 = 2;
-      break;
-    case "waste":
-      points = 8;
-      co2 = 1;
-      break;
-    case "energy":
-      points = 12;
-      co2 = 3;
-      break;
-    case "tree":
-      points = 20;
-      trees = 1;
-      break;
+    case "transport": points = 10; co2 = 2; break;
+    case "waste": points = 8; co2 = 1; break;
+    case "energy": points = 12; co2 = 3; break;
+    case "tree": points = 20; trees = 1; break;
   }
 
   user.ecoScore += points;
@@ -92,31 +87,26 @@ function submitAction() {
   alert("Eco action submitted successfully! 🌱");
 }
 
-/* ---------------- LEADERBOARD ---------------- */
+// ---------- LEADERBOARD ----------
 function loadLeaderboard() {
   const user = JSON.parse(localStorage.getItem("user"));
-
-  document.getElementById("userScore").innerText =
-    user.ecoScore + " Points";
+  document.getElementById("userScore").innerText = user.ecoScore + " Points";
 }
 
-/* ---------------- REWARDS ---------------- */
+// ---------- REWARDS ----------
 function loadRewards() {
   const user = JSON.parse(localStorage.getItem("user"));
-  if(user.ecoScore>=100){
-     document.getElementById("balance").innerText = "₹" + user.balance;
-  }
- 
+  document.getElementById("balance").innerText = "₹" + user.balance;
 }
 
 function redeemReward() {
   let user = JSON.parse(localStorage.getItem("user"));
 
   if (user.balance >= 100) {
-    user.balance -= user.balance;
+    user.balance = 0;
     alert("Reward redeemed successfully 🎉");
   } else {
-    alert("Not enough balance ❌,Must have atleast ₹100 to redeem");
+    alert("Not enough balance ❌ (min ₹100)");
   }
 
   localStorage.setItem("user", JSON.stringify(user));

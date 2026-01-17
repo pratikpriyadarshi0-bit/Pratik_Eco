@@ -7,22 +7,18 @@
 <body>
 
 <nav>
-  <h1>Eco Hub</h1>
+  <h2 id="welcome"></h2>
   <div>
     <a href="dashboard.html">Dashboard</a>
     <a href="actions.html">Actions</a>
     <a href="leaderboard.html">Leaderboard</a>
     <a href="rewards.html">Rewards</a>
+    <a href="profile.html">Profile</a>
   </div>
 </nav>
 
 <div class="container">
   <h2>Your Environmental Impact</h2>
-
-<script src="script.js"></script>
-<script>
-  loadDashboard();
-</script>
 
   <div class="grid">
     <div class="card">
@@ -36,11 +32,17 @@
     </div>
 
     <div class="card">
-      <h3>Trees Equivalent</h3>
+      <h3>Trees Planted</h3>
       <p id="trees" style="font-size:30px">0</p>
     </div>
   </div>
 </div>
+
+<!-- ✅ Scripts ALWAYS at bottom -->
+<script src="script.js"></script>
+<script>
+  loadDashboard();
+</script>
 
 </body>
 </html>
