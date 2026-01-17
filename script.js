@@ -76,6 +76,7 @@ function submitAction() {
     case "waste": points = 8; co2 = 1; break;
     case "energy": points = 12; co2 = 3; break;
     case "tree": points = 20; trees = 1; break;
+    case "event": points = 50;co2 = 10; trees = 5; break;
   }
 
   user.ecoScore += points;
@@ -112,3 +113,4 @@ function redeemReward() {
   localStorage.setItem("user", JSON.stringify(user));
   loadRewards();
 }
+
