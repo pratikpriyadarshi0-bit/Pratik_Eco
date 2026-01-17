@@ -7,31 +7,35 @@
 <body>
 
 <nav>
-  <h1>Green Impact</h1>
+  <h1>Eco Hub</h1>
   <div>
     <a href="dashboard.html">Dashboard</a>
     <a href="actions.html">Actions</a>
     <a href="leaderboard.html">Leaderboard</a>
     <a href="rewards.html">Rewards</a>
+    <a href="profile.html">Profile</a>
   </div>
 </nav>
 
 <div class="container">
   <h2>Log Daily Eco Action</h2>
+  
 
   <div class="card">
-    <label>Select Action</label>
-    <select>
-      <option>Used Public Transport</option>
-      <option>Waste Segregation</option>
-      <option>Saved Electricity</option>
-      <option>Planted a Tree</option>
-    </select>
+   <select id="actionType">
+  <option value="transport">Used Public Transport</option>
+  <option value="waste">Waste Segregation</option>
+  <option value="energy">Saved Electricity</option>
+  <option value="tree">Planted a Tree</option>
+</select>
+
+<script src="script.js"></script>
+
 
     <label>Upload Proof</label>
     <input type="file">
 
-    <button>Submit Action</button>
+    <button onclick="submitAction()">Submit Action</button>
   </div>
 </div>
 

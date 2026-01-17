@@ -7,22 +7,25 @@
 <body>
 
 <nav>
-  <h1>Green Impact</h1>
+  <h1>Eco Hub</h1>
   <div>
     <a href="dashboard.html">Dashboard</a>
     <a href="actions.html">Actions</a>
     <a href="leaderboard.html">Leaderboard</a>
     <a href="rewards.html">Rewards</a>
+    <a href="profile.html">Profile</a>
   </div>
 </nav>
 
-<div class="container">
-  <h2>Top Contributors</h2>
-
-  <div class="card">🥇 Aarav — 320 Points</div>
-  <div class="card">🥈 Neha — 290 Points</div>
-  <div class="card">🥉 Rohan — 250 Points</div>
+<div class="card">
+  🏅 You — <span id="userScore"></span>
 </div>
+
+<script src="script.js"></script>
+<script>
+  loadLeaderboard();
+</script>
+
 
 </body>
 </html>

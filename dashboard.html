@@ -7,7 +7,7 @@
 <body>
 
 <nav>
-  <h1>Green Impact</h1>
+  <h1>Eco Hub</h1>
   <div>
     <a href="dashboard.html">Dashboard</a>
     <a href="actions.html">Actions</a>
@@ -19,20 +19,25 @@
 <div class="container">
   <h2>Your Environmental Impact</h2>
 
+<script src="script.js"></script>
+<script>
+  loadDashboard();
+</script>
+
   <div class="grid">
     <div class="card">
       <h3>EcoScore</h3>
-      <p style="font-size:30px">245</p>
+      <p id="ecoScore" style="font-size:30px">0</p>
     </div>
 
     <div class="card">
       <h3>CO₂ Saved</h3>
-      <p style="font-size:30px">18 kg</p>
+      <p id="co2" style="font-size:30px">0 kg</p>
     </div>
 
     <div class="card">
       <h3>Trees Equivalent</h3>
-      <p style="font-size:30px">6</p>
+      <p id="trees" style="font-size:30px">0</p>
     </div>
   </div>
 </div>

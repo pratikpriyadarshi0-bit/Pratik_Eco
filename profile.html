@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Profile</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <h1>Eco Hub</h1>
+  <div>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="actions.html">Actions</a>
+    <a href="leaderboard.html">Leaderboard</a>
+    <a href="rewards.html">Rewards</a>
+    <a href="profile.html">Profile</a>
+  </div>
+</nav>
+
+<div class="container">
+  <h2>User Profile</h2>
+
+  <div class="card">
+    <label>Name</label>
+    <input id="name" type="text">
+
+    <label>Age</label>
+    <input id="age" type="number">
+
+    <label>College / Organization</label>
+    <input id="college" type="text">
+
+    <label>City</label>
+    <input id="city" type="text">
+
+    <button onclick="saveProfile()">Save Profile</button>
+  </div>
+
+  <h3>Your Impact Summary</h3>
+
+  <div class="grid">
+    <div class="card">
+      <h4>EcoScore</h4>
+      <p id="pScore" style="font-size:24px">0</p>
+    </div>
+
+    <div class="card">
+      <h4>CO₂ Saved</h4>
+      <p id="pCO2" style="font-size:24px">0 kg</p>
+    </div>
+
+    <div class="card">
+      <h4>Trees Equivalent</h4>
+      <p id="pTrees" style="font-size:24px">0</p>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  loadProfile();
+</script>
+
+</body>
+</html>
